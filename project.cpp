@@ -5,22 +5,25 @@
 using namespace std;
 
 // Task structure
-struct Task {
+struct Task
+{
     string description;
     bool completed;
 };
 
 // Function prototypes
-void add(vector<Task>& tasks);
-void remove(vector<Task>& tasks);
-void view(const vector<Task>& tasks);
+void add(vector<Task> &tasks);
+void remove(vector<Task> &tasks);
+void view(const vector<Task> &tasks);
 
-int main() {
+int main()
+{
     vector<Task> tasks;
 
-    char choice; 
+    char choice;
     // The menu options
-    do {
+    do
+    {
         cout << "To-Do List Manager" << endl;
         cout << "1. Add Task" << endl;
         cout << "2. Remove Task" << endl;
@@ -29,31 +32,33 @@ int main() {
         cout << "Enter your choice: ";
         cin >> choice;
 
-        switch(choice) {
-            case '1':
-                add(tasks);
-                break;
-            case '2':
-                remove(tasks);
-                break;
-            case '3':
-                view(tasks);
-                break;
-            case '4':
-                cout << "Exiting..." << endl;
-                break;
-            default:
-                cout << "Invalid choice. Please try again." << endl;
-                break;
+        switch (choice)
+        {
+        case '1':
+            add(tasks);
+            break;
+        case '2':
+            remove(tasks);
+            break;
+        case '3':
+            view(tasks);
+            break;
+        case '4':
+            cout << "Exiting..." << endl;
+            break;
+        default:
+            cout << "Invalid choice. Please try again." << endl;
+            break;
         }
 
-    } while(choice!= '4');
+    } while (choice != '4');
 
     return 0;
 }
 
-void add(vector<Task>& tasks) {
-    //adding task
+void add(vector<Task> &tasks)
+{
+    // adding task
     Task new_task;
     cout << "Enter task description: ";
     cin.ignore(); // ignore the newline character
@@ -63,19 +68,22 @@ void add(vector<Task>& tasks) {
     cout << "Task added." << endl;
 }
 
-void remove(vector<Task>& tasks) {
-     //remove task
-    if (tasks.empty()) {
+void remove(vector<Task> &tasks)
+{
+    // remove task
+    if (tasks.empty())
+    {
         cout << "No tasks to remove." << endl;
         return;
     }
 
-    int index; 
-    //selecting task to remove 
-    cout << "Enter task index to remove (1-" << tasks.size() << "): "; 
+    int index;
+    // selecting task to remove
+    cout << "Enter task index to remove (1-" << tasks.size() << "): ";
     cin >> index;
 
-    if (index < 1 || index > tasks.size()) {
+    if (index < 1 || index > tasks.size())
+    {
         cout << "Invalid task index." << endl;
         return;
     }
@@ -84,17 +92,21 @@ void remove(vector<Task>& tasks) {
     cout << "Task removed." << endl;
 }
 
-void view(const vector<Task>& tasks) { 
+void view(const vector<Task> &tasks)
+{
     // look at the tasks
-    if (tasks.empty()) {
+    if (tasks.empty())
+    {
         cout << "No tasks to display." << endl;
         return;
     }
 
     cout << "Tasks:" << endl;
-    for (size_t i = 0; i < tasks.size(); ++i) {
+    for (size_t i = 0; i < tasks.size(); ++i)
+    {
         cout << i + 1 << ". " << tasks[i].description;
-        if (tasks[i].completed) {
+        if (tasks[i].completed)
+        {
             cout << " (Completed)";
         }
         cout << endl;
