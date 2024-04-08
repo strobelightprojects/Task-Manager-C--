@@ -1,29 +1,18 @@
 # Overview
-
-{Important! Do not say in this section that this is college assignment. Talk about what you are trying to accomplish as a software engineer to further your learning.}
-
-{Provide a description of the software that you wrote to demonstrate the C++ language.}
-
-{Describe your purpose for writing this software.}
-
+I created this project to test my ability to use CPP. This project is a task manager that allows the user to add remove and view task that they have created. It uses a menu loop to do these things. I wanted to be able to save and load task from a file but was not able to do so to expand the useabilty of the project. Overall my purposewas to test what I could create in CPP and to learn more by completing a project. 
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
-
-{Describe the programming language that you used and any libraries.}
+*C++ 20 *Visual Studio Code *Git/Github * clang version 14.0.3 * C++ STL Libary 
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
-
-- [Web Site Name](http://url.link.goes.here)
-- [Web Site Name](http://url.link.goes.here)
+- [W3Schools website used to learn. ](https://www.w3schools.com/cpp/) 
+- [geeksforgeeks website used to learn about STL library](https://www.geeksforgeeks.org/the-c-standard-template-library-stl/)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-
-- Item 1
-- Item 2
-- Item 3
+- Add the ability to save and load tasks
+- Add the option for repitable task like daily 
+- Add a option to alert for tasks based on time
+- Improve by addings desciptions into the program like a welcome message that gives a explanation on how to use the tast mananger

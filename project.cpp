@@ -11,7 +11,7 @@ struct Task
     bool completed;
 };
 
-// Function prototypes
+// Functions 
 void add(vector<Task> &tasks);
 void remove(vector<Task> &tasks);
 void view(const vector<Task> &tasks);
