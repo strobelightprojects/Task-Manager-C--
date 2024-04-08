@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <vector>
 #include <string>
 
@@ -15,14 +14,12 @@ struct Task {
 void add(vector<Task>& tasks);
 void remove(vector<Task>& tasks);
 void view(const vector<Task>& tasks);
-void save(const vector<Task>& tasks);
-void load(vector<Task>& tasks);
 
 int main() {
     vector<Task> tasks;
-    load(tasks); // Load tasks from file
 
-    char choice;
+    char choice; 
+    // The menu options
     do {
         cout << "To-Do List Manager" << endl;
         cout << "1. Add Task" << endl;
@@ -43,7 +40,6 @@ int main() {
                 view(tasks);
                 break;
             case '4':
-                save(tasks); // Save tasks to file
                 cout << "Exiting..." << endl;
                 break;
             default:
@@ -57,8 +53,10 @@ int main() {
 }
 
 void add(vector<Task>& tasks) {
+    //adding task
     Task new_task;
     cout << "Enter task description: ";
+    cin.ignore(); // ignore the newline character
     getline(cin, new_task.description);
     new_task.completed = false;
     tasks.push_back(new_task);
@@ -66,13 +64,15 @@ void add(vector<Task>& tasks) {
 }
 
 void remove(vector<Task>& tasks) {
+     //remove task
     if (tasks.empty()) {
         cout << "No tasks to remove." << endl;
         return;
     }
 
-    int index;
-    cout << "Enter task index to remove (1-" << tasks.size() << "): ";
+    int index; 
+    //selecting task to remove 
+    cout << "Enter task index to remove (1-" << tasks.size() << "): "; 
     cin >> index;
 
     if (index < 1 || index > tasks.size()) {
@@ -84,7 +84,8 @@ void remove(vector<Task>& tasks) {
     cout << "Task removed." << endl;
 }
 
-void view(const vector<Task>& tasks) {
+void view(const vector<Task>& tasks) { 
+    // look at the tasks
     if (tasks.empty()) {
         cout << "No tasks to display." << endl;
         return;
@@ -98,43 +99,4 @@ void view(const vector<Task>& tasks) {
         }
         cout << endl;
     }
-}
-
-void save(const vector<Task>& tasks) {
-    ofstream out_file("tasks.txt");
-    if (!out_file) {
-        cout << "Error: Unable to save tasks to file." << endl;
-        return;
-    }
-
-    for (const Task& t : tasks) {
-        out_file << t.description << "," << t.completed << endl;
-    }
-
-    out_file.close();
-    cout << "Tasks saved to file." << endl;
-}
-
-void load(vector<Task>& tasks) {
-    ifstream in_file("tasks.txt");
-    if (!in_file) {
-        cout << "No saved tasks found." << endl;
-        return;
-    }
-
-    tasks.clear(); // Clear existing tasks
-
-    string line;
-    while (getline(in_file, line)) {
-        size_t pos = line.find(',');
-        if (pos!= string::npos) {
-            Task t;
-            t.description = line.substr(0, pos);
-            t.completed = line.substr(pos + 1) == "1";
-            tasks.push_back(t);
-        }
-    }
-
-    in_file.close();
-    cout << "Tasks loaded from file." << endl;
 }
